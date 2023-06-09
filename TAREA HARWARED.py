@@ -25,10 +25,10 @@ with open("laberintoEdificio.txt", 'r') as archivo:
         fila = int(fila)
         laberinto[piso][columna][fila] = construccion
 
-def recorrer_laberinto(clon, fila, columna, piso, ruta_actual):
+def recorrer_laberinto(clon, fila, columna, piso, rutaActual):
     # Verificar si la posición actual es la salida (ventana)
     if laberinto[piso][columna][fila] == 'V':
-        print(f"Ruta encontrada por clon {clon}: {ruta_actual}")
+        print(f"Ruta encontrada por clon {clon}: {rutaActual}")
         return
 
     # Verificar si la posición actual es un muro (X) o si ya fue visitada
@@ -45,10 +45,10 @@ def recorrer_laberinto(clon, fila, columna, piso, ruta_actual):
     time.sleep(0.1)
 
     # Explorar las posibles direcciones de movimiento: derecha, izquierda, arriba y abajo
-    derecha(clon, fila, columna, piso, ruta_actual)
-    izquierda(clon, fila, columna, piso, ruta_actual)
-    arriba(clon, fila, columna, piso, ruta_actual)
-    abajo(clon, fila, columna, piso, ruta_actual)
+    derecha(clon, fila, columna, piso, rutaActual)
+    izquierda(clon, fila, columna, piso, rutaActual)
+    arriba(clon, fila, columna, piso, rutaActual)
+    abajo(clon, fila, columna, piso, rutaActual)
 
     # Restaurar la posición para evitar conflictos entre clones
     laberinto[piso][columna][fila] = '.'
@@ -125,11 +125,6 @@ def abajo(x,y,r,g,b):
         print('salida encontrada en posicion(',x,',',y,')')
         exit
 
-
-# Los cargo al reves, piso, columna, fila porque es mas facil para
-# posteriormente dibujar los laberintos. Pueden cambiar el orden
-# si lo desean
-
 # Defino la matriz y la inicializo con "."
 matriz=[]
 for i in range(5):
@@ -141,10 +136,7 @@ for i in range(5):
       piso.append(vector)
    matriz.append(piso)
   
-# Usar el Path correspondiente a donde dejen el archivo.
-# En mi caso está en F:\python
-#
-
+#importamos el laberinto
 fd = open("c:\Users\Camil\OneDrive\Escritorio\laberinto.txt","r")
 datos = fd.readlines()
 for dato in datos:
